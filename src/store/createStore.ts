@@ -12,9 +12,7 @@ export function createStore<TState extends Record<string, any>>(
   function subscribe(listener: () => void) {
     listeners.add(listener);
 
-    return () => {
-      listeners.delete(listener);
-    };
+    return () => listeners.delete(listener);
   }
 
   function notifyListeners() {
